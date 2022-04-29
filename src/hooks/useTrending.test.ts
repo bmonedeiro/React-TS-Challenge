@@ -2,14 +2,14 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { getTrending } from '../services/trending';
 import useTrending from './useTrending';
-import { trendResponseMock, trendResponseErrorMock } from '../mocks'
+import { trendMockResponse, errorMockResponse } from '../mocks'
 
 jest.mock('../services/trending')
 const mockedGetTrending = getTrending as jest.Mock<any>;
 
 describe('the useTrending hook', () => {
   beforeEach(() => {
-    mockedGetTrending.mockResolvedValue(trendResponseMock);
+    mockedGetTrending.mockResolvedValue(trendMockResponse);
     jest.clearAllMocks();
   })
 
@@ -20,11 +20,11 @@ describe('the useTrending hook', () => {
     });
     expect(result.current.isFetching).toBeFalsy()
     expect(result.current.error).toBe(null)
-    expect(result.current.trends).toBe(trendResponseMock.results)
+    expect(result.current.trends).toBe(trendMockResponse.results)
   });
 
   it('should throw error ', async () => {
-    mockedGetTrending.mockRejectedValueOnce(trendResponseErrorMock);
+    mockedGetTrending.mockRejectedValueOnce(errorMockResponse);
     const { result } = renderHook(() => useTrending());
     await act(async () => {
       await mockedGetTrending();

@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 
 import api from './api'
 import { Trend, MediaType, TimeWindow } from '../types/trending'
