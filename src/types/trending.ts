@@ -15,6 +15,6 @@ export type Trend = {
   vote_average: number
 }
 
-export type MediaType = 'all' | 'movie' | 'tv' | 'person'
+export type MediaType = 'movie'
 
 export type TimeWindow = 'day' | 'week'

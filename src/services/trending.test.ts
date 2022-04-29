@@ -12,7 +12,7 @@ describe('services/trending', () => {
       .onGet('trending/all/week')
       .reply(200, trendResponseMock);
 
-    const { results } = await getTrending();
+    const { results } = await getTrending({ media_type:'movie', time_window:'week' });
 
     expect(results).toEqual(trendResponseMock.results);
   });
