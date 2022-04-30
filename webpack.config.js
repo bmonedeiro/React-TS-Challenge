@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
@@ -25,6 +26,7 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
     }),
@@ -43,8 +45,12 @@ module.exports = {
         use: ['ts-loader']
       },
       {
-        test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+        ],
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
