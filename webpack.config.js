@@ -17,7 +17,10 @@ module.exports = {
     ],
     extensions: ['.ts', '.tsx', '.js'],
   },
-  devServer: { static: path.join(__dirname, 'src') },
+  devServer: {
+    static: path.join(__dirname, 'src'),
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
@@ -45,8 +48,5 @@ module.exports = {
         use: ['file-loader']
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true,
-  },
+  }
 }
