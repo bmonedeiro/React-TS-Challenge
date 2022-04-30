@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
-import { getTrending } from '../services/trending'
-import { Trend } from "../types/trending"
+import { getTrending } from '@src/services/trending'
+import { Trend } from "@src/types/trending"
 
 const useTrending = () => {
   const [trends, setTrends] = useState<Array<Trend>>([])

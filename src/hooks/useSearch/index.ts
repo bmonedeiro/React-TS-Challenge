@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-import useDebounce from './useDebounce'
-import { searchMovies } from '../services/search'
-import { MovieDetail } from "../types/movie"
+import useDebounce from '../useDebounce'
+import { searchMovies } from '@src/services/search'
+import { MovieDetail } from "@src/types/movie"
 
 const useSearch = (query: string) => {
   const [searchResults, setSearchResults] = useState<MovieDetail>()

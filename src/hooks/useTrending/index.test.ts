@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { getTrending } from '../services/trending';
-import useTrending from './useTrending';
-import { trendMockResponse, errorMockResponse } from '../mocks'
+import { getTrending } from '@src/services/trending';
+import useTrending from '../useTrending';
+import { trendMockResponse, errorMockResponse } from '@src/mocks'
 
 jest.mock('../services/trending')
 const mockedGetTrending = getTrending as jest.Mock<any>;

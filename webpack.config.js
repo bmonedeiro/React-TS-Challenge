@@ -16,6 +16,9 @@ module.exports = {
       'node_modules',
     ],
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      '@src': path.resolve('./src'),
+    },
   },
   devServer: {
     static: path.join(__dirname, 'src'),

@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { getMovie } from '../services/movie';
-import useMovie from './useMovie';
-import { movieMockResponse, errorMockResponse } from '../mocks'
+import { getMovie } from '@src/services/movie';
+import useMovie from '../useMovie';
+import { movieMockResponse, errorMockResponse } from '@src/mocks'
 
 jest.mock('../services/movie')
 const mockedGetTrending = getMovie as jest.Mock<any>;

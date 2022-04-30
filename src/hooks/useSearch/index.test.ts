@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { searchMovies } from '../services/search';
-import useSearch from './useSearch';
-import { movieMockResponse, errorMockResponse } from '../mocks'
+import { searchMovies } from '@src/services/search';
+import useSearch from '../useSearch';
+import { movieMockResponse, errorMockResponse } from '@src/mocks'
 
 jest.mock('../services/search')
 const mockedSearchMovies = searchMovies as jest.Mock<any>;

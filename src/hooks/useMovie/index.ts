@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
-import { getMovie } from '../services/movie'
-import { MovieDetail } from "../types/movie"
+import { getMovie } from '@src/services/movie'
+import { MovieDetail } from "@src/types/movie"
 
 const useMovie = (movieId: number | null) => {
   const [movie, setMovie] = useState<MovieDetail>()
