@@ -57,15 +57,10 @@ type Language = {
 
 type StatusValues = 'Rumored' | 'Planned' | 'In Production' | 'Post Production' | 'Released' | 'Canceled'
 
-export type mainMovieInfo = {
-  genre: Array<string>
-  overview: string
-  productionCompaniesName: Array<string>
-  releaseDate: string
-  voteCount: number
-  voteAverage: number
-  imdbId: string | null
-  revenue: number
-  title: string
-  homepage: string | null
+export type DataObject = {
+  name: string
+  value: string
+  type: string
 }
+
+export type MovieProfile = Array<DataObject>
