@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import ExclamationIcon from "@src/components/Icons/ExclamationIcon";
-import ArrowRightIcon from '@src/components/Icons/ArrowRightIcon';
+import ExclamationIcon from "@src/components/icons/ExclamationIcon";
+import ArrowRightIcon from '@src/components/icons/ArrowRightIcon';
 
 interface ErrorPageProps {
   errorCode?: string
