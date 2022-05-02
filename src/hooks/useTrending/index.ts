@@ -6,7 +6,7 @@ import { Trend } from "@src/types/trending"
 const useTrending = () => {
   const [trends, setTrends] = useState<Array<Trend>>([])
   const [error, setError] = useState<Error | null>(null)
-  const [isFetching, setIsFetching] = useState<boolean>(false)
+  const [isFetching, setIsFetching] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchTrending = async() => {
