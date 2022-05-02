@@ -1,21 +1,44 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react'
 
-import useTrending from '../hooks/useTrending'
+import Header from "@src/components/core/Header";
+import SearchInput from "@src/components/core/SearchInput";
+import useTrending from '@src/hooks/useTrending'
+import useSearch from '@src/hooks/useSearch'
+import ErrorPage from "@src/pages/Error"
+import SpinnerIcon from "@src/components/icons/SpinnerIcon"
+import TrendsGallery from "@src/components/containers/TrendsGallery"
+import SearchResultGallery from "@src/components/containers/SearchResultsGallery"
 
 export const Home = () => {
-  const { trends, error, isFetching } = useTrending();
+  const [value, setValue] = useState('')
+  const { trends, error, isFetching: isFetchingTrends} = useTrending();
+  const { searchResults, isFetching: isFetchingSearchResults } = useSearch(value)
+
+  if (error) return <ErrorPage errorCode="500 error" title="Whoops, looks like something went wrong" description="Sorry, try again later"/>
+
+  const Loading = () => {
+    return (
+      <div className="h-screen w-full flex flex-col justify-center items-center">
+        <SpinnerIcon />
+      </div>
+    )
+  }
+
+  const getContent = () => {
+    if (isFetchingSearchResults || isFetchingTrends) return Loading()
+    if (searchResults) return <SearchResultGallery {...{searchResults}} />
+    else if (trends) return <TrendsGallery {...{trends}} />
+  }
 
   return (
-    <>
-      <h1>Trend Movies</h1>
-      <div className="App" style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", rowGap: "10px", columnGap: "20px"}}>
-        {trends.map((data) => (
-          <Link to={`/about/${data.id}`} key={data.id}>
-            {data.title}
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className="flex flex-col justify-between">
+      <Header />
+      <SearchInput
+        value={value}
+        onChangeHandler={({ target }) => setValue(target.value)}
+      />
+      {getContent()}
+    </div>
   );
 };
 
