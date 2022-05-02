@@ -3,7 +3,7 @@ export type MovieDetail = {
   backdrop_path: string | null
   belongs_to_collection: BelongsToCollection | null
   budget: number
-  genre: Array<Genre>
+  genres: Array<Genre>
   homepage: string | null
   id: number
   imdb_id: string | null
@@ -56,3 +56,16 @@ type Language = {
 }
 
 type StatusValues = 'Rumored' | 'Planned' | 'In Production' | 'Post Production' | 'Released' | 'Canceled'
+
+export type mainMovieInfo = {
+  genre: Array<string>
+  overview: string
+  productionCompaniesName: Array<string>
+  releaseDate: string
+  voteCount: number
+  voteAverage: number
+  imdbId: string | null
+  revenue: number
+  title: string
+  homepage: string | null
+}
