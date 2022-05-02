@@ -8,10 +8,12 @@ import ErrorPage from "@src/pages/Error"
 import SpinnerIcon from "@src/components/icons/SpinnerIcon"
 import TrendsGallery from "@src/components/containers/TrendsGallery"
 import SearchResultGallery from "@src/components/containers/SearchResultsGallery"
+import { TimeWindow } from "@src/types/trending"
 
 export const Home = () => {
   const [value, setValue] = useState('')
-  const { trends, error, isFetching: isFetchingTrends} = useTrending();
+  const [activeTimeWindow, setActiveTimeWindow] = useState<TimeWindow>('day')
+  const { trends, error, isFetching: isFetchingTrends} = useTrending(activeTimeWindow)
   const { searchResults, isFetching: isFetchingSearchResults } = useSearch(value)
 
   if (error) return <ErrorPage errorCode="500 error" title="Whoops, looks like something went wrong" description="Sorry, try again later"/>
@@ -23,11 +25,10 @@ export const Home = () => {
       </div>
     )
   }
-
   const getContent = () => {
     if (isFetchingSearchResults || isFetchingTrends) return Loading()
     if (searchResults) return <SearchResultGallery {...{searchResults}} />
-    else if (trends) return <TrendsGallery {...{trends}} />
+    else if (trends) return <TrendsGallery {...{trends}} activeTimeWindow={activeTimeWindow} onClickHandler={(timeWindow: TimeWindow) => setActiveTimeWindow(timeWindow)}/>
   }
 
   return (

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 import { getTrending } from '@src/services/trending'
-import { Trend } from "@src/types/trending"
+import { Trend, TimeWindow } from "@src/types/trending"
 
-const useTrending = () => {
+const useTrending = ( timeWindow: TimeWindow  = 'week') => {
   const [trends, setTrends] = useState<Array<Trend>>([])
   const [error, setError] = useState<Error | null>(null)
   const [isFetching, setIsFetching] = useState<boolean>(true)
@@ -12,7 +12,7 @@ const useTrending = () => {
     const fetchTrending = async() => {
       try {
         setIsFetching(true)
-        const { results } = await getTrending({ media_type:'movie', time_window:'week' })
+        const { results } = await getTrending({ media_type:'movie', time_window: timeWindow })
         setTrends(results)
       } catch(e) {
         setError(e as Error)
@@ -22,7 +22,7 @@ const useTrending = () => {
     }
 
     fetchTrending()
-  }, [])
+  }, [timeWindow])
 
   return { trends, error, isFetching }
 }

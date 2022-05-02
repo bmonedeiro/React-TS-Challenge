@@ -16,10 +16,13 @@ const useSearch = (query: string) => {
   useEffect(() => {
     const fetchMovie = async() => {
       try {
-        if(!query) return
         setIsFetching(true)
-        const { results } = await searchMovies(query)
-        setSearchResults(results)
+        if (!query) {
+          setSearchResults(undefined)
+        } else {
+          const { results } = await searchMovies(query)
+          setSearchResults(results)
+        }
       } catch(e) {
         setError(e as Error)
       } finally {
