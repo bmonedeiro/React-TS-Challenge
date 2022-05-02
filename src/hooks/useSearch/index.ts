@@ -7,7 +7,7 @@ import { searchMovies } from '@src/services/search'
 import { MovieDetail } from "@src/types/movie"
 
 const useSearch = (query: string) => {
-  const [searchResults, setSearchResults] = useState<MovieDetail>()
+  const [searchResults, setSearchResults] = useState<Array<MovieDetail>>()
   const [error, setError] = useState<Error | null>(null)
   const [isFetching, setIsFetching] = useState<boolean>(false)
 
@@ -16,9 +16,10 @@ const useSearch = (query: string) => {
   useEffect(() => {
     const fetchMovie = async() => {
       try {
+        if(!query) return
         setIsFetching(true)
-        const response = await searchMovies(query)
-        setSearchResults(response)
+        const { results } = await searchMovies(query)
+        setSearchResults(results)
       } catch(e) {
         setError(e as Error)
       } finally {
