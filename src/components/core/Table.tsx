@@ -11,6 +11,7 @@ const Table = ({ data }: TableProps) => {
   const title =  data?.filter((prop) => prop.name === 'Title')[0]?.value || ''
 
   const getContent = (item: DataObject): JSX.Element | String => {
+    if(!item.value) return 'Unavailable'
     if(item.type === 'link') return (<a href={item.value} target="_blank" className="text-primary underline">{item.value}</a>)
     if (item.type === 'img') return <img src={getImageURL(item.value)} alt={item.name} />
     return item.value

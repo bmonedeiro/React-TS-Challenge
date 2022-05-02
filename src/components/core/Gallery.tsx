@@ -16,7 +16,7 @@ const Gallery = ({items}: GalleryProps) => {
         <Card
           key={data.id}
           onClickHandler={() => { navigate(`/about/${data.id}`)}}
-          image={getImageURL(data.poster_path)}
+          image={ data.poster_path ? getImageURL(data.poster_path) : '' }
           name={data.title}
         />
       ))}
