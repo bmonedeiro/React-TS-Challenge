@@ -4,7 +4,12 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#eb0042',
+        'secondary': '#070532'
+      }
+    }
   },
   variants: {},
   plugins: [],
