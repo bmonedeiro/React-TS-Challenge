@@ -8,7 +8,7 @@ const apiMock = new MockAdapter(api)
 
 describe('services/search', () => {
   it('should searchMovies with the appropriate response', async () => {
-    apiMock.onGet('search/movie/?query=batman').reply(200, movieMockResponse)
+    apiMock.onGet('search/movie?query=batman').reply(200, movieMockResponse)
 
     const response = await searchMovies('batman')
     expect(response).toEqual(movieMockResponse)

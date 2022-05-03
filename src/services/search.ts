@@ -13,7 +13,7 @@ type SearchResultsResponse = {
 const searchMovies = async (query: string) => {
   try {
     const encodedQuery = encodeURI(query)
-    const { data } = await api.get<SearchResultsResponse>(`search/movie/?query=${encodedQuery}`)
+    const { data } = await api.get<SearchResultsResponse>(`search/movie?query=${encodedQuery}`)
     return data
   } catch (err) {
     const error = err as Error | AxiosError
