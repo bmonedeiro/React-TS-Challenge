@@ -1,22 +1,24 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-import Card from "@src/components/core/Card"
-import getImageURL from "@src/utils/getImageURL"
+import Card from '@src/components/core/Card'
+import getImageURL from '@src/utils/getImageURL'
 
 interface GalleryProps {
   items: Array<any>
 }
 
-const Gallery = ({items}: GalleryProps) => {
-  const navigate = useNavigate();
+function Gallery({ items }: GalleryProps) {
+  const navigate = useNavigate()
 
   return (
     <div className="w-full flex flex-wrap p-4 justify-center">
-      {items?.map((data) => (
+      {items?.map(data => (
         <Card
           key={data.id}
-          onClickHandler={() => { navigate(`/about/${data.id}`)}}
-          image={ data.poster_path ? getImageURL(data.poster_path) : '' }
+          onClickHandler={() => {
+            navigate(`/about/${data.id}`)
+          }}
+          image={data.poster_path ? getImageURL(data.poster_path) : ''}
           name={data.title}
         />
       ))}

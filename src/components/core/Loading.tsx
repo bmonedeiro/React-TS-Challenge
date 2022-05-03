@@ -1,6 +1,6 @@
-import SpinnerIcon from "../icons/SpinnerIcon"
+import SpinnerIcon from '../icons/SpinnerIcon'
 
-const Loading = () => {
+function Loading() {
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">
       <SpinnerIcon />

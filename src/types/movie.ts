@@ -1,31 +1,3 @@
-export type MovieDetail = {
-  adult: boolean
-  backdrop_path: string | null
-  belongs_to_collection: BelongsToCollection | null
-  budget: number
-  genres: Array<Genre>
-  homepage: string | null
-  id: number
-  imdb_id: string | null
-  original_language: string
-  original_title: string
-  overview: string
-  popularity: number
-  poster_path: string
-  production_companies: Array<ProductionCompany>
-  production_countries: Array<ProductionCountry>
-  release_date: string
-  revenue: number
-  runtime: number | null
-  spoken_languages: Array<Language>
-  status: StatusValues
-  tagline: string | null
-  title: string
-  video: boolean
-  vote_average: number
-  vote_count: number
-}
-
 type BelongsToCollection = {
   id: number
   name: string
@@ -64,3 +36,31 @@ export type DataObject = {
 }
 
 export type MovieProfile = Array<DataObject>
+
+export type MovieDetail = {
+  adult: boolean
+  backdrop_path: string | null
+  belongs_to_collection: BelongsToCollection | null
+  budget: number
+  genres: Array<Genre>
+  homepage: string | null
+  id: number
+  imdb_id: string | null
+  original_language: string
+  original_title: string
+  overview: string
+  popularity: number
+  poster_path: string
+  production_companies: Array<ProductionCompany>
+  production_countries: Array<ProductionCountry>
+  release_date: string
+  revenue: number
+  runtime: number | null
+  spoken_languages: Array<Language>
+  status: StatusValues
+  tagline: string | null
+  title: string
+  video: boolean
+  vote_average: number
+  vote_count: number
+}

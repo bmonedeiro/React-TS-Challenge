@@ -1,37 +1,37 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+import { act, renderHook } from '@testing-library/react-hooks'
 
-import { getTrending } from '@src/services/trending';
-import useTrending from '../useTrending';
+import getTrending from '@src/services/trending'
 import { trendMockResponse, errorMockResponse } from '@src/mocks'
+import useTrending from '.'
 
 jest.mock('../services/trending')
-const mockedGetTrending = getTrending as jest.Mock<any>;
+const mockedGetTrending = getTrending as jest.Mock<any>
 
 describe('the useTrending hook', () => {
   beforeEach(() => {
-    mockedGetTrending.mockResolvedValue(trendMockResponse);
-    jest.clearAllMocks();
+    mockedGetTrending.mockResolvedValue(trendMockResponse)
+    jest.clearAllMocks()
   })
 
   it('should return trends', async () => {
-    const { result } = renderHook(() => useTrending());
+    const { result } = renderHook(() => useTrending())
     await act(async () => {
-      await mockedGetTrending();
-    });
+      await mockedGetTrending()
+    })
     expect(result.current.isFetching).toBeFalsy()
     expect(result.current.error).toBe(null)
     expect(result.current.trends).toBe(trendMockResponse.results)
-  });
+  })
 
   it('should throw error ', async () => {
-    mockedGetTrending.mockRejectedValueOnce(errorMockResponse);
-    const { result } = renderHook(() => useTrending());
+    mockedGetTrending.mockRejectedValueOnce(errorMockResponse)
+    const { result } = renderHook(() => useTrending())
     await act(async () => {
-      await mockedGetTrending();
-    });
+      await mockedGetTrending()
+    })
     expect(result.current.isFetching).toBeFalsy()
     expect(result.current.error?.message).toBe('Error message')
     expect(result.current.trends).toStrictEqual([])
-  });
-
-});
+  })
+})

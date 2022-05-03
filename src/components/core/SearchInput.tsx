@@ -1,11 +1,11 @@
-import SearchIcon from "@src/components/icons/SearchIcon";
+import SearchIcon from '@src/components/icons/SearchIcon'
 
 interface SearchInputProps {
   query: string
-  onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeHandler: React.ChangeEventHandler<HTMLInputElement>
 }
 
-export const SearchInput = ({query: value, onChangeHandler}: SearchInputProps) => {
+export function SearchInput({ query: value, onChangeHandler }: SearchInputProps) {
   return (
     <form className="flex justify-end my-4 mx-6 sm:mx-10">
       <div className="relative w-full md:max-w-96">
@@ -23,7 +23,7 @@ export const SearchInput = ({query: value, onChangeHandler}: SearchInputProps) =
         />
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default SearchInput;
+export default SearchInput

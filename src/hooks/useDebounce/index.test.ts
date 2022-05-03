@@ -1,6 +1,16 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks'
 
-import useDebounce from '../useDebounce'
+import useDebounce from '.'
+
+function mockSetTimeout() {
+  jest.useFakeTimers()
+  jest.spyOn(global, 'setTimeout')
+}
+
+function mockClearTimeout() {
+  jest.useFakeTimers()
+  jest.spyOn(global, 'clearTimeout')
+}
 
 describe('useDebounce()', () => {
   afterEach(() => {
@@ -40,13 +50,3 @@ describe('useDebounce()', () => {
     expect(clearTimeout).toHaveBeenCalledTimes(1)
   })
 })
-
-function mockSetTimeout() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'setTimeout')
-}
-
-function mockClearTimeout() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'clearTimeout')
-}

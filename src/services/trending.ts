@@ -15,12 +15,14 @@ interface TrendRequest {
   page?: number
 }
 
-export const getTrending = async({ media_type, time_window, page}: TrendRequest) => {
+const getTrending = async ({ media_type, time_window, page }: TrendRequest) => {
   try {
     const { data } = await api.get<TrendResponse>(`trending/${media_type}/${time_window}?page=${page}`)
     return data
   } catch (err) {
-    const error = err as Error | AxiosError;
-    throw(error?.message)
+    const error = err as Error | AxiosError
+    throw error?.message
   }
 }
+
+export default getTrending

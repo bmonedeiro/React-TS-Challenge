@@ -1,10 +1,8 @@
+import { useEffect, useState } from 'react'
 
-
-import { useEffect, useState } from "react"
-
+import searchMovies from '@src/services/search'
+import { MovieDetail } from '@src/types/movie'
 import useDebounce from '../useDebounce'
-import { searchMovies } from '@src/services/search'
-import { MovieDetail } from "@src/types/movie"
 
 const useSearch = (query: string) => {
   const [searchResults, setSearchResults] = useState<Array<MovieDetail>>()
@@ -14,7 +12,7 @@ const useSearch = (query: string) => {
   const debouncedValue = useDebounce<string>(query, 1000)
 
   useEffect(() => {
-    const fetchMovie = async() => {
+    const fetchMovie = async () => {
       try {
         setIsFetching(true)
         if (!query) {
@@ -23,7 +21,7 @@ const useSearch = (query: string) => {
           const { results } = await searchMovies(query)
           setSearchResults(results)
         }
-      } catch(e) {
+      } catch (e) {
         setError(e as Error)
       } finally {
         setIsFetching(false)
@@ -33,8 +31,7 @@ const useSearch = (query: string) => {
     fetchMovie()
   }, [debouncedValue])
 
-
   return { searchResults, error, isFetching }
 }
 
-export default useSearch;
+export default useSearch

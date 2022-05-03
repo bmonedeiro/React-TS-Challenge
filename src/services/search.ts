@@ -10,13 +10,15 @@ type SearchResultsResponse = {
   total_results: number
 }
 
-export const searchMovies = async(query: string) => {
+const searchMovies = async (query: string) => {
   try {
-    const encodedQuery = encodeURI(query);
+    const encodedQuery = encodeURI(query)
     const { data } = await api.get<SearchResultsResponse>(`search/movie/?query=${encodedQuery}`)
     return data
   } catch (err) {
-    const error = err as Error | AxiosError;
-    throw(error?.message)
+    const error = err as Error | AxiosError
+    throw error?.message
   }
 }
+
+export default searchMovies
