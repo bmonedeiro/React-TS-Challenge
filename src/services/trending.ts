@@ -9,16 +9,15 @@ type TrendResponse = {
   total_pages: number
   total_results: number
 }
-
-//TODO: filter by timeWindow
 interface TrendRequest {
   media_type: MediaType
   time_window: TimeWindow
+  page?: number
 }
 
-export const getTrending = async({ media_type, time_window }: TrendRequest) => {
+export const getTrending = async({ media_type, time_window, page}: TrendRequest) => {
   try {
-    const { data } = await api.get<TrendResponse>(`trending/${media_type}/${time_window}`)
+    const { data } = await api.get<TrendResponse>(`trending/${media_type}/${time_window}?page=${page}`)
     return data
   } catch (err) {
     const error = err as Error | AxiosError;
