@@ -6,7 +6,9 @@
   "scripts": {
     "webpack": "webpack --mode production",
     "start": "webpack serve --open --port 8081",
-    "test": "jest"
+    "test": "jest",
+    "lint-fix": "eslint --fix src",
+    "lint": "eslint src"
   },
   "author": "",
   "license": "ISC",
