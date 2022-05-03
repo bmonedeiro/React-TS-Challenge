@@ -4,8 +4,8 @@
   "description": "React with Typescript take home challenge",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack",
-    "start": "webpack serve --open",
+    "webpack": "webpack --mode production",
+    "start": "webpack serve --open --port 8081",
     "test": "jest"
   },
   "author": "",
