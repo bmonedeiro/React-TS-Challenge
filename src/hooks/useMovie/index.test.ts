@@ -2,10 +2,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import getMovie from '@src/services/movie'
-import { movieMockResponse, errorMockResponse } from '@src/mocks'
+import { movieMockResponse, errorMockResponse, formattedMockMovieData } from '@src/mocks'
 import useMovie from '.'
 
-jest.mock('../services/movie')
+jest.mock('@src/services/movie')
 const mockedGetTrending = getMovie as jest.Mock<any>
 
 describe('the useMovie hook', () => {
@@ -21,7 +21,7 @@ describe('the useMovie hook', () => {
     })
     expect(result.current.isFetching).toBeFalsy()
     expect(result.current.error).toBe(null)
-    expect(result.current.movie).toBe(movieMockResponse)
+    expect(result.current.movie).toStrictEqual(formattedMockMovieData)
   })
 
   it('should throw error ', async () => {

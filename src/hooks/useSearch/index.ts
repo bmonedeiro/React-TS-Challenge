@@ -9,7 +9,7 @@ const useSearch = (query: string) => {
   const [error, setError] = useState<Error | null>(null)
   const [isFetching, setIsFetching] = useState<boolean>(false)
 
-  const debouncedValue = useDebounce<string>(query, 1000)
+  const debouncedValue = useDebounce<string>(query, 500)
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -18,8 +18,8 @@ const useSearch = (query: string) => {
         if (!query) {
           setSearchResults(undefined)
         } else {
-          const { results } = await searchMovies(query)
-          setSearchResults(results)
+          const response = await searchMovies(query)
+          setSearchResults(response?.results)
         }
       } catch (e) {
         setError(e as Error)

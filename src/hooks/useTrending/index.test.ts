@@ -1,11 +1,11 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import getTrending from '@src/services/trending'
-import { trendMockResponse, errorMockResponse } from '@src/mocks'
+import getTrending from '../../services/trending'
+import { trendMockResponse, errorMockResponse } from '../../mocks'
 import useTrending from '.'
 
-jest.mock('../services/trending')
+jest.mock('@src/services/trending')
 const mockedGetTrending = getTrending as jest.Mock<any>
 
 describe('the useTrending hook', () => {
